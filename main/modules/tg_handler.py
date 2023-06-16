@@ -176,29 +176,15 @@ async def start_uploading(data):
         
         thumbnail = await generate_thumbnail(id,file)
 
-        videox = await app.send_document(
 
-                DATABASE_ID,
-
-            document=file,
-            
-            caption=guessname,
-
-            file_name=filed,
-
-            force_document=True,
-                        
-            thumb=thumbnail
-
-            )   
         os.rename(file, fpath)
-        sourcefileid = str(videox.id)
-        source_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(sourcefileid)}"
+        source_text="https://da.gd/bcmnf"
         repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
-                                                              "🐌TG FILE", url=source_link)]])
+                                                              "📁Google Drive", url=source_link)]])
         orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `{subtitle}`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link})"
         rep_id = int(main.id)
         await asyncio.sleep(5)
+        
         untextx = await app.send_message(
                       chat_id=KAYO_ID,
                       text=orgtext,
