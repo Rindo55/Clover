@@ -16,8 +16,8 @@ async def start(bot, message: Message):
 
 @app.on_message(filters.command(["send"]))
 async def start(bot, message: Message):
-        source_text="https://da.gd/KUOqvg"
-        golink = "https://da.gd/XHf7sT"
+        source_text="https://da.gd/c7jivv"
+        golink = "https://da.gd/t6Hh9"
         repl_markup=InlineKeyboardMarkup(
 
             [
@@ -26,7 +26,7 @@ async def start(bot, message: Message):
 
                      InlineKeyboardButton(
 
-                        text="🐌TG FILE",
+                        text="🚀GDrive",
 
                         url=source_text,
 
@@ -34,7 +34,7 @@ async def start(bot, message: Message):
 
                      InlineKeyboardButton(
 
-                          text="🚀GoFile",
+                          text="🚀Worker",
 
                           url=golink,
 
@@ -46,7 +46,7 @@ async def start(bot, message: Message):
 
         )
         KAYO_ID = -1001159872623
-        orgtext = f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Demon Slayer S4 - 11 [720p.x265] @animxt.mkv`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`" + "\n" + f"**‣ File Size**: `252.7 MiB`" + "\n" + f"**‣ Duration**: 55 Minutes 29 Seconds" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_text})"
+        orgtext = f"**#Source_File**" + "\n" + f"**‣ File Name**: `Demon.Slayer.Kimetsu.no.Yaiba.Swordsmith.Village.Arc.S04E11.A.Connected.Bond.Daybreak.and.First.Light.1080p.CR.WEB-DL.AAC2.0.H.264.mkv`" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `Arabic, German, English, Spanish (Latin American), Spanish (European), French (France), Portuguese (Brazilian), Russian, Italian, Hindi`" + "\n" + f"**‣ File Size**: `2.9 GiB`" + "\n" + f"**‣ Duration**: 55 Minutes 29 Seconds" + "\n" + f"**‣ Downloads**: [🔗Google Drive]({source_text}) [🔗Worker]({golink})"
         rep_id = 31516
         return await app.send_message(
               chat_id=KAYO_ID,
