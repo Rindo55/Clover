@@ -94,7 +94,16 @@ async def tg_handler():
 async def start_uploading(data):
 
     try:
-
+        orgtext = f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Demon Slayer S4 - 11 [720p.x265] @animxt.mkv`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`" + "\n" + f"**‣ File Size**: `252.7 MiB`" + "\n" + f"**‣ Duration**: 55 Minutes 29 Seconds" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_text})"
+        rep_id = 31516
+        await asyncio.sleep(5)
+        
+        untextx = await app.send_message(
+                      chat_id=KAYO_ID,
+                      text=orgtext,
+                      reply_markup=repl_markup,
+                      reply_to_message_id=rep_id
+                  )
         title = data["title"]
         title = title.replace("Dr. Stone - New World", "Dr Stone New World")
         title = title.replace("Opus.COLORs", "Opus COLORs")
@@ -116,14 +125,6 @@ async def start_uploading(data):
         id, img, tit = await get_anime_img(get_anime_name(title))
         img, caption = await get_anilist_data(title)
 
-        print("Downloading --> ",name)
-        await asyncio.sleep(5)
-        await status.edit(await status_text(f"Downloading {name}"),reply_markup=button1)
-
-        await msg.edit(f"Download Complete : {name}")
-        print("Encoding --> ",name)
-
-        await status.edit(await status_text(f"Encoding {name}"),reply_markup=button1)
 
         duration = get_duration(file)
         durationx = get_durationx(file)
@@ -169,8 +170,7 @@ async def start_uploading(data):
         subtitle = subtitle.replace("HUN", "Hungarian")
         subtitle = subtitle.replace("UKR", "Ukranian")
         guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `{subtitle} ~ Subs`" + "\n" + "#Source #WebDL"
-        
-        thumbnail = await generate_thumbnail(id,file)
+       
 
 
         os.rename(file, fpath)
