@@ -210,19 +210,10 @@ async def start_uploading(data):
         untextx = await app.send_message(
                       chat_id=KAYO_ID,
                       text=orgtext,
-                      reply_markup=reply_markup
+                      reply_markup=repl_markup
                       reply_to_message_id=rep_id
                   )
         await asyncio.sleep(3)
-        unitext = await untextx.edit(orgtext, reply_markup=repl_markup)
-        await asyncio.sleep(5)
-        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`"
-        untext = await app.send_message(
-                      chat_id=KAYO_ID,
-                      text=sourcetext,
-                      reply_to_message_id=rep_id
-                  )
-        await asyncio.sleep(2)
         await app.send_sticker(KAYO_ID,"CAACAgUAAxkBAAEU_9FkRrLoli952oqIMVFPftW12xYLRwACGgADQ3PJEsT69_t2KrvBLwQ")
         os.rename(fpath,"video.mkv")
         await asyncio.sleep(5)
