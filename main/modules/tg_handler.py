@@ -114,14 +114,11 @@ async def start_uploading(data):
         bin_id = -1001700435443
         name = name.replace(f" @animxt.","").replace(ext,"").strip()
         id, img, tit = await get_anime_img(get_anime_name(title))
-        msg = await app.send_photo(bin_id,photo=img,caption=title)
         img, caption = await get_anilist_data(title)
 
         print("Downloading --> ",name)
         await asyncio.sleep(5)
         await status.edit(await status_text(f"Downloading {name}"),reply_markup=button1)
-
-        file = await downloader(msg,link,size,title)
 
         await msg.edit(f"Download Complete : {name}")
         print("Encoding --> ",name)
@@ -171,29 +168,55 @@ async def start_uploading(data):
         subtitle = subtitle.replace("HRV", "Croatian")
         subtitle = subtitle.replace("HUN", "Hungarian")
         subtitle = subtitle.replace("UKR", "Ukranian")
-        main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
         guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `{subtitle} ~ Subs`" + "\n" + "#Source #WebDL"
         
         thumbnail = await generate_thumbnail(id,file)
 
 
         os.rename(file, fpath)
-        source_text="https://da.gd/bcmnf"
-        repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
-                                                              "📁Google Drive", url=source_link)]])
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `{subtitle}`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link})"
-        rep_id = int(main.id)
+        source_text="https://da.gd/KUOqvg"
+        golink = "https://da.gd/XHf7sT"
+        repl_markup=InlineKeyboardMarkup(
+
+            [
+
+                [
+
+                     InlineKeyboardButton(
+
+                        text="🐌TG FILE",
+
+                        url=source_text,
+
+                    ),
+
+                     InlineKeyboardButton(
+
+                          text="🚀GoFile",
+
+                          url=golink,
+
+                    ),
+
+                ],
+
+            ],
+
+        )
+        orgtext = f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Demon Slayer S4 - 11 [720p.x265] @animxt.mkv`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`" + "\n" + f"**‣ File Size**: `252.7 MiB`" + "\n" + f"**‣ Duration**: 55 Minutes 29 Seconds" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_text})"
+        rep_id = 31516
         await asyncio.sleep(5)
         
         untextx = await app.send_message(
                       chat_id=KAYO_ID,
                       text=orgtext,
+                      reply_markup=reply_markup
                       reply_to_message_id=rep_id
                   )
         await asyncio.sleep(3)
         unitext = await untextx.edit(orgtext, reply_markup=repl_markup)
         await asyncio.sleep(5)
-        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `{subtitle}`"
+        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`"
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=sourcetext,
@@ -203,25 +226,9 @@ async def start_uploading(data):
         await app.send_sticker(KAYO_ID,"CAACAgUAAxkBAAEU_9FkRrLoli952oqIMVFPftW12xYLRwACGgADQ3PJEsT69_t2KrvBLwQ")
         os.rename(fpath,"video.mkv")
         await asyncio.sleep(5)
-        compressed = await compress_video(duration,untext,name,sourcetext)
         
         dingdong = await untext.edit(sourcetext)
 
-
-        if compressed == "None" or compressed == None:
-
-            print("Encoding Failed Uploading The Original File")
-
-            os.rename("video.mkv",fpath)
-
-        else:
-
-            os.rename("out.mkv",fpath)
-  
-        print("Uploading --> ",name)
-
-        await status.edit(await status_text(f"Uploading {name }"),reply_markup=button1)
-        video = await upload_video(msg,fpath,id,tit,name,size,sourcetext,untext,subtitle,nyaasize) 
         try:
 
             os.remove("video.mkv")
