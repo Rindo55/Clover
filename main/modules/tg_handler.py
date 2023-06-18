@@ -94,6 +94,35 @@ async def tg_handler():
 async def start_uploading(data):
 
     try:
+        source_text="https://da.gd/KUOqvg"
+        golink = "https://da.gd/XHf7sT"
+        repl_markup=InlineKeyboardMarkup(
+
+            [
+
+                [
+
+                     InlineKeyboardButton(
+
+                        text="🐌TG FILE",
+
+                        url=source_text,
+
+                    ),
+
+                     InlineKeyboardButton(
+
+                          text="🚀GoFile",
+
+                          url=golink,
+
+                    ),
+
+                ],
+
+            ],
+
+        )
         KAYO_ID = -1001159872623
         orgtext = f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `Demon Slayer S4 - 11 [720p.x265] @animxt.mkv`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English`" + "\n" + f"**‣ File Size**: `252.7 MiB`" + "\n" + f"**‣ Duration**: 55 Minutes 29 Seconds" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_text})"
         rep_id = 31516
